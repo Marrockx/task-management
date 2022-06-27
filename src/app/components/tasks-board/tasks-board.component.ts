@@ -26,6 +26,8 @@ export class TasksBoardComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.fetchAllTasks()
+    this.fetchNewTasks();
+
   }
 
   ngAfterViewInit(): void {
@@ -75,8 +77,8 @@ export class TasksBoardComponent implements OnInit, AfterViewInit {
 
 
   drop(event: CdkDragDrop<ICreateTask[]>) {
-    if (event.previousContainer == event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(this.newTasks, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(
         event.previousContainer.data,

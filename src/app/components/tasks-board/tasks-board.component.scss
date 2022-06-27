@@ -1,4 +1,6 @@
 $lighter-purple: #f5f0f7;
+$dark-purple: #9d44ab;
+
 
 .tasks-container {
     // position: absolute;
@@ -17,13 +19,22 @@ $lighter-purple: #f5f0f7;
         box-shadow: none;
         color: #323131;
         margin-bottom: 2rem !important;
+        cursor: move;
 
+        &:hover {
+            border: 2px solid $dark-purple;
+        }
 
+        &__icon {
+            cursor: pointer;
+        }
     }
 
     &__description {
         padding-right: 2rem;
     }
+
+
 }
 
 .ui.header {

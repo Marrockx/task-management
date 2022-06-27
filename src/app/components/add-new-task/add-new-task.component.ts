@@ -25,9 +25,6 @@ export class AddNewTaskComponent implements OnInit {
 
   public addNewTask !: FormGroup;
 
-  titleCtrl !: FormControl;
-  descriptionCtrl !: FormControl;
-
   disabled: boolean = false;
 
   constructor(
@@ -50,11 +47,6 @@ export class AddNewTaskComponent implements OnInit {
   }
 
   addTask(task: ICreateTask) {
-    this.newTasks.push({
-      title: this.addNewTask.value.title,
-      description: this.addNewTask.value.description,
-
-    });
     // console.log(this.addNewTask.value)
     this.task = this.addNewTask.value;
     this.createTask(task);

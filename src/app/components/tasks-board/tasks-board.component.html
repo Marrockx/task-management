@@ -6,14 +6,13 @@
                 <h3 class="ui header purple">New Tasks</h3>
 
                 <div cdkDropList #newTasksList="cdkDropList" [cdkDropListData]="newTasks"
-                    [cdkDropListConnectedTo]="[inProgressList] && [doneList]" (cdkDropListDropped)="drop($event)">
+                    [cdkDropListConnectedTo]="[inProgressList,doneList]" (cdkDropListDropped)="drop($event)">
 
                     <div *ngFor="let newTask of newTasks" cdkDrag>
-
                         <div class="ui card task__card">
                             <div class="content">
                                 <h4 class="task__title">{{ newTask.title }}</h4>
-                                <span class="right floated"
+                                <span class="right floated task__card__icon"
                                     (click)="deleteNewTask(newTask.id); $event.stopImmediatePropagation() ">
                                     <i class="red trash icon"></i>
                                 </span>
@@ -31,17 +30,17 @@
             <div class="task-content">
                 <h3 class="ui header purple">In Progress</h3>
 
-                <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="newTasks"
-                    [cdkDropListConnectedTo]="[newTasksList] && [doneList]" (cdkDropListDropped)="drop($event)">
+                <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgressTasks"
+                    [cdkDropListConnectedTo]="[newTasksList,doneList]" (cdkDropListDropped)="drop($event)">
 
                     <div *ngFor="let inProgressTask of inProgressTasks" cdkDrag>
 
                         <div class="ui card task__card">
                             <div class="content">
                                 <h4 class="task__title">{{ inProgressTask.title }}</h4>
-                                <span class="right floated">
+                                <!-- <span class="right floated">
                                     <i class="red trash icon"></i>
-                                </span>
+                                </span> -->
                                 <div class="task__description">
                                     {{ inProgressTask.description }}
                                 </div>
@@ -56,17 +55,17 @@
             <div class="task-content">
                 <h3 class="ui header purple">Done</h3>
 
-                <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="newTasks"
-                    [cdkDropListConnectedTo]="[ newTasksList] && [inProgressList]" (cdkDropListDropped)="drop($event)">
+                <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="doneTasks"
+                    [cdkDropListConnectedTo]="[ newTasksList,inProgressList]" (cdkDropListDropped)="drop($event)">
 
                     <div *ngFor="let doneTask of doneTasks" cdkDrag>
 
                         <div class="ui card task__card">
                             <div class="content">
                                 <h4 class="task__title">{{ doneTask.title }}</h4>
-                                <span class="right floated">
+                                <!-- <span class="right floated task__card__icon">
                                     <i class="red trash icon"></i>
-                                </span>
+                                </span> -->
                                 <div class="task__description">
                                     {{ doneTask.description }}
                                 </div>
