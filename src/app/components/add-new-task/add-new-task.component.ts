@@ -35,8 +35,8 @@ export class AddNewTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.addNewTask = this.formBuilder.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required]
+      title: ['', [Validators.required, Validators.maxLength(15)]],
+      description: ['', [Validators.required, Validators.maxLength(15)]]
     })
   }
 
