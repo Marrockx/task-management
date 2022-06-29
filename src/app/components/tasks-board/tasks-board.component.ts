@@ -22,7 +22,10 @@ export class TasksBoardComponent implements OnInit, AfterViewInit {
   doneTasks: ICreateTask[] = [];
 
   newTask !: Task;
-  constructor(private tasksService: TasksService) { }
+  constructor(private tasksService: TasksService) {
+    this.fetchAllTasks();
+    this.fetchNewTasks();
+  }
 
   ngOnInit(): void {
     this.fetchAllTasks()
@@ -67,18 +70,33 @@ export class TasksBoardComponent implements OnInit, AfterViewInit {
   }
 
 
-  deleteNewTask(newTaskId: string) {
+  async deleteNewTask(newTaskId: string) {
 
     this.tasksService.deleteNewTask(newTaskId)
-      .subscribe(result => this.fetchNewTasks());
+      .subscribe((result: any) => this.fetchNewTasks());
 
     console.log("DELETE TASK", newTaskId)
   }
 
+  updateNewTasks() {
+
+  }
+
+  updateInProgressTasks() {
+
+  }
+
+  updateDoneTasks() {
+
+  }
 
   drop(event: CdkDragDrop<ICreateTask[]>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(this.newTasks, event.previousIndex, event.currentIndex);
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
     } else {
       transferArrayItem(
         event.previousContainer.data,
@@ -87,5 +105,13 @@ export class TasksBoardComponent implements OnInit, AfterViewInit {
         event.currentIndex,
       );
     }
+
+    // this.addTask$;
+
   }
+
+  // createTask(task: ICreateTask) {
+  //   this.tasksService.createNewTask(this.task)
+  //     .subscribe(result => this.fetchAllTasks());
+  // }
 }

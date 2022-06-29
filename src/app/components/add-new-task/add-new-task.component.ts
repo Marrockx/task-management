@@ -57,7 +57,7 @@ export class AddNewTaskComponent implements OnInit {
 
   createTask(task: ICreateTask) {
     this.tasksService.createNewTask(this.task)
-      .subscribe(result => this.fetchNewTasks());
+      .subscribe((result: any) => this.fetchNewTasks());
   }
 
   backToDashboard() {

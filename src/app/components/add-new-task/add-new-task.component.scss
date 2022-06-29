@@ -9,9 +9,11 @@ $dark-purple: #9d44ab;
         flex-direction: column;
         justify-content: center;
         height: 100vh;
-        z-index: 200;
-        position: absolute;
+        z-index: 500;
         width: 100%;
+        position: absolute;
+        top: 0;
+
     }
 
     &--inner {
@@ -29,6 +31,8 @@ $dark-purple: #9d44ab;
     &--content {
         & .ui.segment {
             padding: 2.8rem;
+            box-shadow: 26px 3px 112px 0px rgba(174, 172, 175, 0.63);
+
         }
 
         &__label {
@@ -36,6 +40,11 @@ $dark-purple: #9d44ab;
             display: inline !important;
         }
     }
+}
+
+.close.icon {
+    // margin-top: 7.2rem !important;x
+    padding: 1.2rem 2.4rem;
 }
 
 .ui.form input:focus,
